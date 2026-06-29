@@ -87,7 +87,7 @@ export function renderDetailView(school) {
   const commentsHtml = comments.length
     ? comments.map(c => renderComment(c, admin)).join('')
     : `<div class="empty-state" style="padding: 32px 16px;">
-         <div class="empty-state-icon">${icon('message', 36)}</div>
+         <div class="empty-state-emoji" aria-hidden="true">📝</div>
          <div class="empty-state-text">还没有评论。住过这所学校？留下第一条。</div>
        </div>`;
 
@@ -251,7 +251,7 @@ function refreshComments(school) {
   const comments = getComments(school.id);
   if (comments.length === 0) {
     list.innerHTML = `<div class="empty-state" style="padding: 32px 16px;">
-      <div class="empty-state-icon">${icon('message', 36)}</div>
+      <div class="empty-state-emoji" aria-hidden="true">📝</div>
       <div class="empty-state-text">还没有评论。住过这所学校？留下第一条。</div>
     </div>`;
     return;

@@ -49,8 +49,8 @@ export function renderSchoolCard(school, commentCount = 0) {
       </div>
       ${tags.length ? `<div class="school-card-tags">${tags.join('')}</div>` : ''}
       <div class="school-card-foot">
-        <span class="comment-count">${icon('message', 14)}<span>${commentCount}</span></span>
-        <span class="arrow">详情 ${icon('chevronRight', 14)}</span>
+        <span class="comment-count"><span class="comment-emoji" aria-hidden="true">💬</span><span>${commentCount}</span></span>
+        <span class="arrow">看详情 ${icon('chevronRight', 14)}</span>
       </div>
     </button>
   `;
@@ -73,6 +73,7 @@ export function renderSkeletonList(count = 5) {
 export function renderEmptyState({ title, text, actionLabel, actionId }) {
   return `
     <div class="empty-state">
+      <div class="empty-state-emoji" aria-hidden="true">🔍</div>
       <div class="empty-state-icon">${icon('info', 48)}</div>
       <div class="empty-state-title">${escapeHtml(title)}</div>
       <div class="empty-state-text">${escapeHtml(text)}</div>

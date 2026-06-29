@@ -92,6 +92,7 @@ function renderAll() {
   const listHtml = `
     <main class="app-main">
       <section class="hero">
+        <div class="hero-stickers" aria-hidden="true"><span>🛏️</span><span>🚿</span><span>📶</span></div>
         <h1 class="hero-title">查宿舍，挑学校</h1>
         <p class="hero-sub">三千所院校的宿舍与设施一目了然。搜索、筛选、读评论，在 90 秒内排出你的短名单。</p>
       </section>

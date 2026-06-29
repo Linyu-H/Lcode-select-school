@@ -20,6 +20,9 @@
   --danger: oklch(0.55 0.18 25);
   --line: oklch(0.9 0.005 268.5);
   --line-strong: oklch(0.82 0.008 268.5);
+  --shadow-card: 0 2px 8px oklch(0.13 0.02 268.5 / 0.07);
+  --shadow-card-hover: 0 4px 8px oklch(0.13 0.02 268.5 / 0.11);
+  --shadow-pop: 0 8px 24px oklch(0.13 0.02 268.5 / 0.16);
 
   /* Spacing scale */
   --s-1: 4px;
@@ -82,6 +85,9 @@
   --danger: oklch(0.68 0.16 25);
   --line: oklch(0.26 0.008 268.5);
   --line-strong: oklch(0.34 0.01 268.5);
+  --shadow-card: 0 2px 8px oklch(0 0 0 / 0.22);
+  --shadow-card-hover: 0 4px 8px oklch(0 0 0 / 0.3);
+  --shadow-pop: 0 8px 24px oklch(0 0 0 / 0.34);
 }
 
 /* System preference fallback when user hasn't picked a theme.
@@ -106,6 +112,9 @@
     --danger: oklch(0.68 0.16 25);
     --line: oklch(0.26 0.008 268.5);
     --line-strong: oklch(0.34 0.01 268.5);
+    --shadow-card: 0 2px 8px oklch(0 0 0 / 0.22);
+    --shadow-card-hover: 0 4px 8px oklch(0 0 0 / 0.3);
+    --shadow-pop: 0 8px 24px oklch(0 0 0 / 0.34);
   }
 }
 
@@ -130,7 +139,10 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top left, color-mix(in oklch, var(--primary) 7%, transparent) 0 280px, transparent 520px),
+    radial-gradient(circle at bottom right, color-mix(in oklch, var(--accent) 5%, transparent) 0 220px, transparent 480px),
+    var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 15px;

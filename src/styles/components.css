@@ -20,8 +20,9 @@
 .btn-primary {
   background: var(--primary);
   color: var(--bg);
+  box-shadow: 0 2px 8px color-mix(in oklch, var(--primary) 26%, transparent);
 }
-.btn-primary:hover { background: var(--primary-press); }
+.btn-primary:hover { background: var(--primary-press); box-shadow: 0 4px 8px color-mix(in oklch, var(--primary) 32%, transparent); }
 
 .btn-secondary {
   background: transparent;
@@ -73,6 +74,7 @@
   background: var(--primary-tint);
   border-color: var(--primary);
   color: var(--primary);
+  box-shadow: 0 2px 8px color-mix(in oklch, var(--primary) 14%, transparent);
 }
 .chip[disabled] { opacity: 0.5; cursor: not-allowed; }
 .chip .chip-x {
@@ -207,6 +209,7 @@
   padding-left: 44px;
   height: 48px;
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
 }
 @media (min-width: 960px) {
   .search .input { height: 40px; }
@@ -255,7 +258,7 @@ dialog::backdrop {
   padding: 8px 16px 24px;
   padding-bottom: max(24px, env(safe-area-inset-bottom));
   overflow-y: auto;
-  box-shadow: 0 -8px 24px oklch(0.13 0.02 268.5 / 0.08);
+  box-shadow: var(--shadow-pop);
 }
 .drawer::before {
   content: "";
@@ -273,7 +276,7 @@ dialog::backdrop {
     margin: 12vh auto 0;
     border-radius: var(--r-lg);
     padding: 24px;
-    box-shadow: 0 16px 48px oklch(0.13 0.02 268.5 / 0.18);
+    box-shadow: var(--shadow-pop);
   }
   .drawer::before { display: none; }
 }

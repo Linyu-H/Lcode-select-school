@@ -70,8 +70,38 @@
 
 /* ===== Hero / Search ===== */
 .hero {
-  padding: 32px 0 16px;
+  position: relative;
+  padding: 36px 0 18px;
 }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 18px -10px auto auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: color-mix(in oklch, var(--primary) 9%, transparent);
+  filter: blur(18px);
+  pointer-events: none;
+}
+.hero-stickers {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.hero-stickers span {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transform: rotate(-3deg);
+}
+.hero-stickers span:nth-child(2) { transform: translateY(3px) rotate(2deg); }
+.hero-stickers span:nth-child(3) { transform: rotate(4deg); }
 .hero-title {
   font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: 600;
@@ -94,8 +124,8 @@
   background: color-mix(in oklch, var(--bg) 92%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 8px 0 12px;
-  margin-bottom: 8px;
+  padding: 10px 0 14px;
+  margin-bottom: 10px;
 }
 
 .search-section .search { width: 100%; }
@@ -143,23 +173,26 @@
 .school-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 .school-card {
   width: 100%;
   text-align: left;
-  padding: 14px 16px;
+  padding: 15px 16px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   gap: 10px;
-  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 .school-card:hover {
-  border-color: var(--line-strong);
-  background: var(--surface-2);
+  border-color: color-mix(in oklch, var(--primary) 28%, var(--line-strong));
+  background: color-mix(in oklch, var(--surface-2) 82%, var(--primary-tint));
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
 }
 .school-card:active {
   transform: scale(0.997);
@@ -202,10 +235,9 @@
   gap: 4px;
   font-size: 0.75rem;
   color: var(--muted);
-  background: var(--surface-2);
-  padding: 2px 8px 2px 8px;
+  background: color-mix(in oklch, var(--surface-2) 86%, var(--bg));
+  padding: 3px 8px;
   border-radius: var(--r-sm);
-  border: 1px solid var(--line);
 }
 .labeled-tag .tag {
   border: 0;
@@ -228,7 +260,11 @@
 .school-card-foot .comment-count {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+}
+.comment-emoji {
+  font-size: 0.875rem;
+  line-height: 1;
 }
 .school-card-foot .arrow {
   color: var(--primary);
@@ -245,6 +281,18 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
+}
+.empty-state-emoji {
+  width: 54px;
+  height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  font-size: 1.75rem;
+  transform: rotate(-4deg);
 }
 .empty-state-icon {
   width: 48px; height: 48px;
@@ -326,6 +374,7 @@
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
 }
 @media (min-width: 600px) {
@@ -377,6 +426,7 @@
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
@@ -438,6 +488,7 @@
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
   padding: 16px;
   display: flex;
   flex-direction: column;
