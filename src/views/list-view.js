@@ -122,6 +122,83 @@ function renderHotBoard() {
   `;
 }
 
+function renderNotices() {
+  const items = [
+    {
+      icon: 'book',
+      tone: 'primary',
+      title: '免费简历网站',
+      text: '一站式简历制作工具，免费导出，帮你轻松搞定求职第一步。',
+      action: { label: '立即访问', href: 'https://resume.lcode.space', external: true },
+    },
+    {
+      icon: 'message',
+      tone: 'accent',
+      title: '详细无偿高考咨询',
+      text: '志愿填报、专业选择、宿舍与校园生活，一对一免费答疑，扫码即可添加。',
+      action: { label: '查看企业.jpg', image: '企业.jpg' },
+    },
+  ];
+  const cards = items.map((n) => {
+    const actionHtml = n.action
+      ? n.action.image
+        ? `<button type="button" class="notice-action" data-notice-image="${n.action.image}">${escapeHtml(n.action.label)}${icon('chevronRight', 16)}</button>`
+        : `<a class="notice-action" href="${escapeHtml(n.action.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(n.action.label)}${icon('chevronRight', 16)}</a>`
+      : '';
+    return `
+      <article class="notice-card notice-${n.tone}" data-tone="${n.tone}">
+        <div class="notice-icon">${icon(n.icon, 20)}</div>
+        <div class="notice-body">
+          <h3 class="notice-title">${escapeHtml(n.title)}</h3>
+          <p class="notice-text">${escapeHtml(n.text)}</p>
+        </div>
+        ${actionHtml}
+      </article>
+    `;
+  }).join('');
+  return `
+    <section class="notices" aria-label="公告通知">
+      <div class="notices-head">
+        <span class="notices-title">${icon('info', 16)}<span>公告</span></span>
+        <span class="notices-sub">精选服务 · 全部免费</span>
+      </div>
+      <div class="notices-list">${cards}</div>
+    </section>
+  `;
+}
+
+function bindNotices() {
+  document.querySelectorAll('[data-notice-image]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const src = btn.dataset.noticeImage;
+      const dlg = document.createElement('dialog');
+      dlg.className = 'notice-dialog';
+      dlg.innerHTML = `
+        <div class="notice-dialog-inner">
+          <button type="button" class="notice-dialog-close" aria-label="关闭">${icon('x', 20)}</button>
+          <div class="notice-dialog-head">
+            <span class="notice-dialog-badge">${icon('message', 16)}</span>
+            <div>
+              <div class="notice-dialog-title">详细无偿高考咨询</div>
+              <div class="notice-dialog-sub">扫描下方二维码，添加企业微信</div>
+            </div>
+          </div>
+          <div class="notice-dialog-img-wrap">
+            <img src="${src}" alt="企业.jpg 咨询二维码" />
+          </div>
+          <p class="notice-dialog-tip">长按或右键保存图片，随时扫码添加</p>
+        </div>
+      `;
+      document.body.appendChild(dlg);
+      dlg.showModal();
+      const close = () => { dlg.close(); setTimeout(() => dlg.remove(), 60); };
+      dlg.addEventListener('click', (e) => { if (e.target === dlg) close(); });
+      dlg.querySelector('.notice-dialog-close').addEventListener('click', close);
+      dlg.addEventListener('close', () => { if (dlg.isConnected) close(); });
+    });
+  });
+}
+
 function renderAll() {
   const host = document.getElementById('view-host');
   const listHtml = `
@@ -131,6 +208,8 @@ function renderAll() {
         <h1 class="hero-title">查宿舍，挑学校</h1>
         <p class="hero-sub">三千所院校的宿舍与设施一目了然。搜索、筛选、读评论，在 90 秒内排出你的短名单。</p>
       </section>
+
+      ${renderNotices()}
 
       ${renderHotBoard()}
 
@@ -161,6 +240,7 @@ function renderAll() {
   host.innerHTML = listHtml;
   bindList();
   bindHotBoard();
+  bindNotices();
   renderResultsOnly();
 }
 
