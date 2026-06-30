@@ -184,7 +184,7 @@
       </div>
       <div class="hot-board-list">${n}</div>
     </section>
-  `}function rt(){const t=[{icon:"book",tone:"primary",title:"免费简历网站",text:"一站式简历制作工具，免费导出，帮你轻松搞定求职第一步。",action:{label:"立即访问",href:"https://resume.lcode.space",external:!0}},{icon:"message",tone:"accent",title:"详细无偿高考咨询",text:"志愿填报、专业选择、宿舍与校园生活，一对一免费答疑，扫码即可添加。",action:{label:"查看企业.jpg",image:"企业.jpg"}}].map(a=>{const n=a.action?a.action.image?`<button type="button" class="notice-action" data-notice-image="${a.action.image}">${r(a.action.label)}${p("chevronRight",16)}</button>`:`<a class="notice-action" href="${r(a.action.href)}" target="_blank" rel="noopener noreferrer">${r(a.action.label)}${p("chevronRight",16)}</a>`:"";return`
+  `}function rt(){const t=[{icon:"book",tone:"primary",title:"免费简历网站",text:"一站式简历制作工具，免费导出，帮你轻松搞定求职第一步。",action:{label:"立即访问",href:"https://resume.lcode.space",external:!0}},{icon:"message",tone:"accent",title:"详细无偿高考咨询",text:"志愿填报、专业选择、宿舍与校园生活，一对一免费答疑，扫码即可添加。",action:{label:"查看个人二维码",image:"qy.jpg"}}].map(a=>{const n=a.action?a.action.image?`<button type="button" class="notice-action" data-notice-image="${a.action.image}">${r(a.action.label)}${p("chevronRight",16)}</button>`:`<a class="notice-action" href="${r(a.action.href)}" target="_blank" rel="noopener noreferrer">${r(a.action.label)}${p("chevronRight",16)}</a>`:"";return`
       <article class="notice-card notice-${a.tone}" data-tone="${a.tone}">
         <div class="notice-icon">${p(a.icon,20)}</div>
         <div class="notice-body">
@@ -212,7 +212,7 @@
             </div>
           </div>
           <div class="notice-dialog-img-wrap">
-            <img src="${t}" alt="企业.jpg 咨询二维码" />
+            <img src="${t}" alt="qy.jpg 咨询二维码" />
           </div>
           <p class="notice-dialog-tip">长按或右键保存图片，随时扫码添加</p>
         </div>

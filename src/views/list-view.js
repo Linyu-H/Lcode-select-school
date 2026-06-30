@@ -136,7 +136,7 @@ function renderNotices() {
       tone: 'accent',
       title: '详细无偿高考咨询',
       text: '志愿填报、专业选择、宿舍与校园生活，一对一免费答疑，扫码即可添加。',
-      action: { label: '查看企业.jpg', image: '企业.jpg' },
+      action: { label: '查看个人二维码', image: 'qy.jpg' },
     },
   ];
   const cards = items.map((n) => {
@@ -184,7 +184,7 @@ function bindNotices() {
             </div>
           </div>
           <div class="notice-dialog-img-wrap">
-            <img src="${src}" alt="企业.jpg 咨询二维码" />
+            <img src="${src}" alt="qy.jpg 咨询二维码" />
           </div>
           <p class="notice-dialog-tip">长按或右键保存图片，随时扫码添加</p>
         </div>
